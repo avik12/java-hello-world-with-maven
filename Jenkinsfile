@@ -33,7 +33,7 @@ pipeline{
         stage("Push To Docker Registory"){
             steps{
                 script{
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_credential'){
+                    docker.withRegistry('https://registry.hub.docker.com', 'Docker_Credentials'){
                         docker.image("dockeravik22/hello-world-maven:${TAG}").push()
                         docker.image("dockeravik22/hello-world-maven:${TAG}").push("latest")
                     }
