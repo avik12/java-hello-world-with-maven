@@ -1,21 +1,18 @@
 pipeline{
     agent any
-
     tools {
-         maven 'maven'
-         jdk 'java'
+        maven 'Maven1'
     }
-
     stages{
-        stage('checkout'){
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github access', url: 'https://github.com/sreenivas449/java-hello-world-with-maven.git']]])
+        stage("Git Checkout"){
+            steps{    
+            git credentialsId: 'GitHubAcc', url: 'https://github.com/avik12/java-hello-world-with-maven.git'
             }
         }
-        stage('build'){
+        stage("Mvn Build"){
             steps{
-               bat 'mvn package'
+             sh 'mvn clean install'   
             }
         }
-    }
+    }    
 }
