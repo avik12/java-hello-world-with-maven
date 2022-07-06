@@ -2,6 +2,7 @@ pipeline{
     agent any
     tools {
         maven 'Maven1'
+        docker 'Docker1'
     }
     stages{
         stage("Git Checkout"){
@@ -12,6 +13,11 @@ pipeline{
         stage("Maven Build"){
             steps{
              sh 'mvn clean install'   
+            }
+        }
+        stage("Docker Build"){
+            steps{
+              sh 'docker version'  
             }
         }
     }    
