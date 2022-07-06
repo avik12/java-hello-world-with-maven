@@ -9,7 +9,7 @@ pipeline{
             git credentialsId: 'GitHubAcc', url: 'https://github.com/avik12/java-hello-world-with-maven.git'
             }
         }
-        stage("Mvn Build"){
+        stage("Maven Build"){
             steps{
              sh 'mvn clean install'   
             }
